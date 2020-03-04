@@ -50,13 +50,13 @@ namespace InvokeWaferMap
 			for(int i = 0; i < xy.Count; ++i)
 			{
 				var rd = new RowDefinition();
-				rd.Height = GridLength.Auto;
+				// rd.Height = GridLength.Auto;
 				Wafer.RowDefinitions.Add(rd);
 			}
 			for (int i = 0; i < xy.Max(); i++)
 			{
 				var cd = new ColumnDefinition();
-				cd.Width = GridLength.Auto;
+				// cd.Width = GridLength.Auto;
 				Wafer.ColumnDefinitions.Add(cd);
 			}
 
@@ -66,11 +66,10 @@ namespace InvokeWaferMap
 				var ylist = new List<Border>();
 				for (int x = 0; x < xy[y]; ++x)
 				{
-					Wafer.RowDefinitions.Add(new RowDefinition());
 					var newrect = new Border();
 					newrect.BorderBrush = Brushes.Black;
-					newrect.Height = 10;
-					newrect.Width = 10;
+					//newrect.Height = 10;
+					//newrect.Width = 10;
 					newrect.BorderThickness = new Thickness(1, 1, 1, 1);
 					// newrect
 					Grid.SetColumn(newrect, x);
