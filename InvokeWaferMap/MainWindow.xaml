@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <local:WaferMapControl x:Name="WaferMapImpl"></local:WaferMapControl>
+        <DockPanel>
+            <WrapPanel DockPanel.Dock="Top">
+                <Button Content="New" Click="New_Click"/>
+                <Button Content="Delete" Click="Delete_Click"/>
+                <Button Content="Add" Click="Add_Click"/>
+                <Button Content="Remove" Click="Remove_Click"/>
+            </WrapPanel>
+            <local:WaferMapControl x:Name="WaferMapImpl" DockPanel.Dock="Bottom"/>
+        </DockPanel>
     </Grid>
 </Window>

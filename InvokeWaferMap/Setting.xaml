@@ -1,0 +1,75 @@
+﻿<Window x:Class="InvokeWaferMap.Setting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InvokeWaferMap"
+        mc:Ignorable="d"
+        Title="Setting" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="hoge"/>
+            <Button Content="hoge"/>
+            <Button Content="hoge"/>
+            <Button Content="hoge"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TreeView x:Name="TreeView" ItemsSource="{Binding }" Grid.Column="0">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="local:TreeLists" ItemsSource="{Binding Childs}">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding IsChecked}"/>
+                            <TextBlock Text="{Binding DisplayName}"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            <DataGrid x:Name="Summary" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.Column="1">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Owner" Binding="{Binding Owner}"/>
+                    <DataGridComboBoxColumn x:Name="ViewCombo" Header="Value" ItemsSource="{Binding ValueDictionary}"
+                                            SelectedValueBinding="{Binding View}"
+                                            SelectedValuePath="Key" DisplayMemberPath="Value"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <ItemsControl x:Name="BindingItemControl" ItemsSource="{Binding}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Title}"/>
+                                <TextBlock Text="{Binding SubTitle}"/>
+                                <DataGrid ItemsSource="{Binding DataGridSource}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+        <StatusBar Grid.Row="3">
+            <StatusBarItem>
+                <TextBlock Text="Status"/>
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem>
+                <ProgressBar Width="100" Height="20"/>
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem>
+                <ComboBox/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

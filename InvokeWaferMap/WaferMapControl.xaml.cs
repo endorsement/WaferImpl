@@ -85,5 +85,16 @@ namespace InvokeWaferMap
 			return true;
 		}
 
+		public void AllClear()
+		{
+			// Gridから削除
+			Wafer.Children.Clear();
+			// 管理用リストから削除
+			WaferBorder.Clear();
+
+			Wafer.RowDefinitions.Clear();
+			Wafer.ColumnDefinitions.Clear();
+		}
+
 	}
 }

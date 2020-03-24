@@ -23,12 +23,36 @@ namespace InvokeWaferMap
 		public MainWindow()
 		{
 			InitializeComponent();
+		}
+
+
+		private void gen()
+		{
 			var lst = new List<int>();
 			for (int y = 0; y < 45; y++)
 			{
 				lst.Add(80);
 			}
 			WaferMapImpl.MakeWafer(lst);
+		}
+
+		private void New_Click(object sender, RoutedEventArgs e)
+		{
+			gen();
+		}
+		private void Delete_Click(object sender, RoutedEventArgs e)
+		{
+			var s = new Setting();
+			s.ShowDialog();
+		}
+
+		private void Add_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+		private void Remove_Click(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }
